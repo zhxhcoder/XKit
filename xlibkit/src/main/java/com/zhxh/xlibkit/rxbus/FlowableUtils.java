@@ -33,7 +33,7 @@ public final class FlowableUtils {
         ObjectHelper.requireNonNull(onComplete, "onComplete is null");
         ObjectHelper.requireNonNull(onSubscribe, "onSubscribe is null");
 
-        MyLambdaSubscriber<T> ls = new MyLambdaSubscriber<T>(onNext, onError, onComplete, onSubscribe);
+        XLambdaSubscriber<T> ls = new XLambdaSubscriber<T>(onNext, onError, onComplete, onSubscribe);
         flowable.subscribe(ls);
         return ls;
     }

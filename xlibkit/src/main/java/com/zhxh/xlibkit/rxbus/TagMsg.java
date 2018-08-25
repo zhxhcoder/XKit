@@ -1,12 +1,12 @@
 package com.zhxh.xlibkit.rxbus;
 
 
-final class TagMessage {
+final class TagMsg {
 
     Object mEvent;
     String mTag;
 
-    TagMessage(Object event, String tag) {
+    TagMsg(Object event, String tag) {
         mEvent = event;
         mTag = tag;
     }

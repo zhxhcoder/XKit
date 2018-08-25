@@ -1,7 +1,6 @@
 package com.zhxh.xlibkit.rxbus;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,7 +10,7 @@ import io.reactivex.disposables.Disposable;
 
 final class CacheUtils {
 
-    private final Map<Class, List<TagMessage>> stickyEventsMap = new ConcurrentHashMap<>();
+    private final Map<Class, List<TagMsg>> stickyEventsMap = new ConcurrentHashMap<>();
 
     private final Map<Object, List<Disposable>> disposablesMap = new ConcurrentHashMap<>();
 
@@ -23,10 +22,10 @@ final class CacheUtils {
         return Holder.CACHE_UTILS;
     }
 
-    void addStickyEvent(final TagMessage stickyEvent) {
+    void addStickyEvent(final TagMsg stickyEvent) {
         Class eventType = stickyEvent.getEventType();
         synchronized (stickyEventsMap) {
-            List<TagMessage> stickyEvents = stickyEventsMap.get(eventType);
+            List<TagMsg> stickyEvents = stickyEventsMap.get(eventType);
             if (stickyEvents == null) {
                 stickyEvents = new ArrayList<>();
                 stickyEvents.add(stickyEvent);
@@ -42,14 +41,14 @@ final class CacheUtils {
         }
     }
 
-    TagMessage findStickyEvent(final Class eventType, final String tag) {
+    TagMsg findStickyEvent(final Class eventType, final String tag) {
         synchronized (stickyEventsMap) {
-            List<TagMessage> stickyEvents = stickyEventsMap.get(eventType);
+            List<TagMsg> stickyEvents = stickyEventsMap.get(eventType);
             if (stickyEvents == null) return null;
             int size = stickyEvents.size();
-            TagMessage res = null;
+            TagMsg res = null;
             for (int i = size - 1; i >= 0; --i) {
-                TagMessage stickyEvent = stickyEvents.get(i);
+                TagMsg stickyEvent = stickyEvents.get(i);
                 if (stickyEvent.isSameType(eventType, tag)) {
                     res = stickyEvents.get(i);
                     break;

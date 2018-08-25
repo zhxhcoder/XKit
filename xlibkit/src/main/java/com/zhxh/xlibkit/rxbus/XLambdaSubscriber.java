@@ -15,7 +15,7 @@ import io.reactivex.internal.subscriptions.SubscriptionHelper;
 import io.reactivex.observers.LambdaConsumerIntrospection;
 import io.reactivex.plugins.RxJavaPlugins;
 
-final class MyLambdaSubscriber<T> extends AtomicReference<Subscription>
+final class XLambdaSubscriber<T> extends AtomicReference<Subscription>
         implements FlowableSubscriber<T>, Subscription, Disposable, LambdaConsumerIntrospection {
 
     private static final long serialVersionUID = -7251123623727029452L;
@@ -24,9 +24,9 @@ final class MyLambdaSubscriber<T> extends AtomicReference<Subscription>
     final Action                         onComplete;
     final Consumer<? super Subscription> onSubscribe;
 
-    public MyLambdaSubscriber(Consumer<? super T> onNext, Consumer<? super Throwable> onError,
-                              Action onComplete,
-                              Consumer<? super Subscription> onSubscribe) {
+    public XLambdaSubscriber(Consumer<? super T> onNext, Consumer<? super Throwable> onError,
+                             Action onComplete,
+                             Consumer<? super Subscription> onSubscribe) {
         super();
         this.onNext = onNext;
         this.onError = onError;

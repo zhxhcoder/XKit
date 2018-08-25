@@ -53,7 +53,7 @@ public final class RxBus {
                       final boolean isSticky) {
         Utils.requireNonNull(event, tag);
 
-        TagMessage msgEvent = new TagMessage(event, tag);
+        TagMsg msgEvent = new TagMsg(event, tag);
         if (isSticky) {
             CacheUtils.getInstance().addStickyEvent(msgEvent);
         }
@@ -125,7 +125,7 @@ public final class RxBus {
         };
 
         if (isSticky) {
-            final TagMessage stickyEvent = CacheUtils.getInstance().findStickyEvent(typeClass, tag);
+            final TagMsg stickyEvent = CacheUtils.getInstance().findStickyEvent(typeClass, tag);
             if (stickyEvent != null) {
                 Flowable<T> stickyFlowable = Flowable.create(new FlowableOnSubscribe<T>() {
                     @Override
@@ -151,16 +151,16 @@ public final class RxBus {
     private <T> Flowable<T> toFlowable(final Class<T> eventType,
                                        final String tag,
                                        final Scheduler scheduler) {
-        Flowable<T> flowable = mBus.ofType(TagMessage.class)
-                .filter(new Predicate<TagMessage>() {
+        Flowable<T> flowable = mBus.ofType(TagMsg.class)
+                .filter(new Predicate<TagMsg>() {
                     @Override
-                    public boolean test(TagMessage tagMessage) {
+                    public boolean test(TagMsg tagMessage) {
                         return tagMessage.isSameType(eventType, tag);
                     }
                 })
-                .map(new Function<TagMessage, Object>() {
+                .map(new Function<TagMsg, Object>() {
                     @Override
-                    public Object apply(TagMessage tagMessage) {
+                    public Object apply(TagMsg tagMessage) {
                         return tagMessage.mEvent;
                     }
                 })
