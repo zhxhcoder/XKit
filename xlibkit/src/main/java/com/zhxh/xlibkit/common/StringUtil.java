@@ -1,4 +1,4 @@
-package com.zhxh.xlibkit.design;
+package com.zhxh.xlibkit.common;
 
 import android.text.TextUtils;
 

@@ -2,6 +2,8 @@ package com.zhxh.xlibkit.design;
 
 import android.graphics.Color;
 
+import com.zhxh.xlibkit.common.StringUtil;
+
 /**
  * Created by zhxh on 2018/6/29
  */
