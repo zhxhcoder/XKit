@@ -1,4 +1,4 @@
-package com.zhxh.xlibkit.design;
+package com.zhxh.xlibkit.ui;
 
 import android.graphics.Color;
 
