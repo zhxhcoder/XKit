@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -96,5 +97,34 @@ public class StringUtil {
             }
         }
         return result;
+    }
+
+    public static String[] split(String source, String split) {
+        if (isNull(source))
+            return null;
+        if (isNull(split))
+            return new String[]{source};
+
+        Vector<String> vector = new Vector<String>();
+
+        int startIndex = 0;
+        int endIndex = -1;
+
+        while (true) {
+
+            if ((endIndex = source.indexOf(split, startIndex)) != -1) {
+                vector.add(source.substring(startIndex, endIndex));
+                startIndex = endIndex + split.length();
+
+            } else {
+
+                if (startIndex <= source.length()) {
+                    vector.add(source.substring(startIndex));
+                }
+
+                break;
+            }
+        }
+        return vector.toArray(new String[vector.size()]);
     }
 }
