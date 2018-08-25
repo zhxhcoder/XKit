@@ -72,4 +72,29 @@ public class StringUtil {
         return m.find();
 
     }
+
+
+    public static boolean isNull(String checkStr) {
+        boolean result = false;
+        if (null == checkStr) {
+            result = true;
+        } else {
+            if (checkStr.length() == 0) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public static boolean isNull(List<?> list) {
+        boolean result = false;
+        if (null == list) {
+            result = true;
+        } else {
+            if (list.size() == 0) {
+                result = true;
+            }
+        }
+        return result;
+    }
 }
