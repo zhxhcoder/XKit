@@ -7,7 +7,7 @@ import com.zhxh.xlibkit.common.StringUtil;
 /**
  * Created by zhxh on 2018/6/29
  */
-public class ViewUtil {
+public final class ViewUtil {
 
     public static int parseColor(String colorString) {
 

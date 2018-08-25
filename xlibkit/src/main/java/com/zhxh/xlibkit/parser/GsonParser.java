@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GsonParser {
+public final class GsonParser {
 
     public static <T> T parse(String resultStr, Class<T> t) {
         if (TextUtils.isEmpty(resultStr))

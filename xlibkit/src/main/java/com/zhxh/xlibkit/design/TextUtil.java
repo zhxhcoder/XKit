@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * Created by zhxh on 2018/6/23
  */
-public class TextUtil {
+public final class TextUtil {
     private static Paint paint = new Paint();
     /**
      * 获取字体宽度
