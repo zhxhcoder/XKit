@@ -127,4 +127,15 @@ public final class StringUtil {
         }
         return vector.toArray(new String[vector.size()]);
     }
+
+    public static List<String> getRegEx(String input, String regex) {
+        List<String> stringList = new ArrayList<>();
+        Pattern p = Pattern.compile(regex);
+        Matcher m;
+        m = p.matcher(input);
+        while (m.find())
+            stringList.add(m.group());
+
+        return stringList;
+    }
 }
