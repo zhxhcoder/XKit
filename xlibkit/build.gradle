@@ -77,7 +77,7 @@ bintray {
     key = properties.getProperty("bintray.apikey")
     pkg {
         repo = rootProject.ext.bintray.repo//创建的仓库名字
-        name = rootProject.ext.bintray.name//packageName
+        name = rootProject.ext.bintray.packageName//packageName
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ['Apache-2.0']//创建仓库时选择的license type
@@ -85,7 +85,7 @@ bintray {
         publish = true // 是否是公开项目。
 
         version {
-            name = rootProject.ext.bintray.name//版本号
+            name = rootProject.ext.bintray.version//版本号
             desc = rootProject.ext.bintray.desc//版本描述
             released = new Date()
             vcsTag = rootProject.ext.bintray.vcsTag
