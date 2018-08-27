@@ -49,7 +49,7 @@ final class CacheUtils {
             TagMsg res = null;
             for (int i = size - 1; i >= 0; --i) {
                 TagMsg stickyEvent = stickyEvents.get(i);
-                if (stickyEvent.isSameType(eventType, tag)) {
+                if (stickyEvent.isSameType(tag, eventType)) {
                     res = stickyEvents.get(i);
                     break;
                 }

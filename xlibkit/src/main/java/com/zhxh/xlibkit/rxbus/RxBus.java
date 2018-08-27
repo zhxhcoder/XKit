@@ -52,7 +52,7 @@ public final class RxBus {
                       final boolean isSticky) {
         Utils.requireNonNull(event, tag);
 
-        TagMsg msgEvent = new TagMsg(event, tag);
+        TagMsg msgEvent = new TagMsg(tag, event);
         if (isSticky) {
             CacheUtils.getInstance().addStickyEvent(msgEvent);
         }
@@ -154,7 +154,7 @@ public final class RxBus {
                 .filter(new Predicate<TagMsg>() {
                     @Override
                     public boolean test(TagMsg tagMessage) {
-                        return tagMessage.isSameType(eventType, tag);
+                        return tagMessage.isSameType(tag, eventType);
                     }
                 })
                 .map(new Function<TagMsg, Object>() {

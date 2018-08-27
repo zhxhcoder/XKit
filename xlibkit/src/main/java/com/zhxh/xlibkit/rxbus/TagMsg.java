@@ -1,17 +1,16 @@
 package com.zhxh.xlibkit.rxbus;
 
-
 final class TagMsg {
 
-    Object mEvent;
     String mTag;
+    Object mEvent;
 
-    TagMsg(Object event, String tag) {
-        mEvent = event;
+    TagMsg(String tag, Object event) {
         mTag = tag;
+        mEvent = event;
     }
 
-    boolean isSameType(final Class eventType, final String tag) {
+    boolean isSameType(final String tag, final Class eventType) {
         return Utils.equals(getEventType(), eventType)
                 && Utils.equals(this.mTag, tag);
     }
@@ -22,6 +21,8 @@ final class TagMsg {
 
     @Override
     public String toString() {
-        return "event: " + mEvent + ", tag: " + mTag;
+        return "tag='" + mTag + '\'' +
+                ", event=" + mEvent +
+                '}';
     }
 }
