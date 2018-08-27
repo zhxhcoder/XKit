@@ -31,7 +31,7 @@ ext {
             'gitUrl'     : 'https://github.com/zhxhcoder/XKit.git', //github仓库的地址
             'repo'       : 'android', //创建的仓库名字
             'name'       : 'XKit',
-            'desc'       : 'extent chart with more customized feature',//版本描述
+            'desc'       : 'android kit for developer',//版本描述
             'userId'     : 'geekcoder',
             'userEmail'  : 'zhxhcoder@gmail.com',
             'vcsTag'     : 'v1.2'

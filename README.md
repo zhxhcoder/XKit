@@ -1,6 +1,6 @@
 # XKit
 android kit for developer
-逐渐提点原来的XTools和XUtils项目
+逐渐替换原来的XTools和XUtils项目
 
 
 ## RxBus
