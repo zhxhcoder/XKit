@@ -33,23 +33,22 @@ public final class RxBus {
     }
 
     public void post(final Object event) {
-        post(event, "", false);
+        post("", event, false);
     }
 
-    public void post(final Object event, final String tag) {
-        post(event, tag, false);
+    public void post(final String tag, final Object event) {
+        post(tag, event, false);
     }
 
     public void postSticky(final Object event) {
-        post(event, "", true);
+        post("", event, true);
     }
 
-    public void postSticky(final Object event, final String tag) {
-        post(event, tag, true);
+    public void postSticky(final String tag, final Object event) {
+        post(tag, event, true);
     }
 
-    private void post(final Object event,
-                      final String tag,
+    private void post(final String tag, final Object event,
                       final boolean isSticky) {
         Utils.requireNonNull(event, tag);
 

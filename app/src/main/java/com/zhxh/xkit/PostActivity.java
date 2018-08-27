@@ -12,7 +12,7 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
-        RxBus.getDefault().post(new User(2), "haha");
-        RxBus.getDefault().postSticky(new User(1), "hehe");
+        RxBus.getDefault().post("haha", new User(2));
+        RxBus.getDefault().postSticky("hehe", new User(1));
     }
 }
