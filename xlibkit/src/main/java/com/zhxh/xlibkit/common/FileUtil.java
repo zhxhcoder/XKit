@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FileUtil {
+public final class FileUtil {
 
     /********************************遍历匹配的文件*********************************/
 
