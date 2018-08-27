@@ -1,0 +1,41 @@
+ext {
+
+    android = [
+            compileSdkVersion: 27,
+            buildToolsVersion: '27.0.3',
+            applicationId    : 'com.zhxh.xkit',
+            minSdkVersion    : 16,
+            targetSdkVersion : 27,
+            versionCode      : 12,
+            versionName      : '1.2',
+            minifyEnabled    : false,
+            outputFileName   : "xkit.aar"
+    ]
+
+    dependencies = [
+            'libSupportV7'       : 'com.android.support:appcompat-v7:27.1.1',
+            'libConstraintLayout': 'com.android.support.constraint:constraint-layout:1.1.2',
+    ]
+
+    build = [
+            'outputFileName'       : 'xkit.aar',
+    ]
+
+    bintray = [
+            'version'    : "1.2",
+            'groupId'    : 'com.zhxh',//groupId
+            'publish'    : true,
+            'packageName': 'XKit',//packageName
+            'userOrg'    : 'zhxh',//自己bintray创建的organization名称
+            'siteUrl'    : 'https://github.com/zhxhcoder/XKit',  //项目的主页
+            'gitUrl'     : 'https://github.com/zhxhcoder/XKit.git', //github仓库的地址
+            'repo'       : 'android', //创建的仓库名字
+            'name'       : 'XKit',
+            'desc'       : 'extent chart with more customized feature',//版本描述
+            'userId'     : 'geekcoder',
+            'userEmail'  : 'zhxhcoder@gmail.com',
+            'vcsTag'     : 'v1.2'
+    ]
+
+}
+
