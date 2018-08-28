@@ -33,7 +33,7 @@ public class TestActivity extends AppCompatActivity {
                     @Override
                     public void onEvent(final User user) {
 
-                        Log.d("rx-thread", "id " + user.id);
+                        Log.d("rxbus-thread", "id " + user.id);
 
                         runOnUiThread(new Runnable() {
                             @Override
