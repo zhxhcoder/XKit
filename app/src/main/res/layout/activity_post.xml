@@ -10,6 +10,10 @@
         android:id="@+id/tvBus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PostActivity" />
+        android:layout_marginTop="10dp"
+        android:text="PostActivity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
