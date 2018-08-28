@@ -13,7 +13,6 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -22,11 +21,9 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
-        RxBus.getDefault().post("postMain", new User(2));
-        RxBus.getDefault().postSticky("postStickyMain", new User(1));
-
+        RxBus.getDefault().post("postMain", new User(1));
+        RxBus.getDefault().postSticky("postStickyMain", new User(2));
 
         startActivity(new Intent(PostActivity.this, TestActivity.class));
-
     }
 }
