@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         RxBus.getDefault().subscribeSticky(this, "thread", RxBus.Callback<User> { s -> tvBus.append("eventTag ${s.id}") })
 
+
     }
 
     override fun onDestroy() {
