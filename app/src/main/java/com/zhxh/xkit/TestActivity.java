@@ -35,7 +35,7 @@ public class TestActivity extends AppCompatActivity {
 
                         Log.d("rx-thread", "id " + user.id);
 
-                        runOnUiThread(new TimerTask() {
+                        runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 tvBus.append("id " + user.id);
