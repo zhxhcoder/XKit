@@ -3,6 +3,7 @@ package com.zhxh.xkit;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.zhxh.xlibkit.rxbus.RxBus;
 
@@ -21,9 +22,16 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
+
+        findViewById(R.id.tvBus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PostActivity.this, TestActivity.class));
+            }
+        });
+
         RxBus.getDefault().post("postMain", new User(1));
         RxBus.getDefault().postSticky("postStickyMain", new User(2));
 
-        startActivity(new Intent(PostActivity.this, TestActivity.class));
     }
 }
