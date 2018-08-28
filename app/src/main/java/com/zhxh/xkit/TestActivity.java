@@ -1,22 +1,14 @@
 package com.zhxh.xkit;
 
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.zhxh.xlibkit.rxbus.RxBus;
 
-import java.util.TimerTask;
-
 public class TestActivity extends AppCompatActivity {
 
-
     TextView tvBus;
-
-
-    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +17,53 @@ public class TestActivity extends AppCompatActivity {
 
         tvBus = findViewById(R.id.tvBus);
 
-
         new Thread(new Runnable() {
             @Override
             public void run() {
-                RxBus.getDefault().subscribeSticky(this, "thread", new RxBus.Callback<User>() {
+                RxBus.getDefault().subscribe(this, "postMain", new RxBus.Callback<User>() {
                     @Override
                     public void onEvent(final User user) {
-
-                        Log.d("rxbus-thread", "id " + user.id);
 
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                tvBus.append("id " + user.id);
+                                tvBus.append("\npostMain " + user.id);
+                            }
+                        });
+                    }
+                });
+                RxBus.getDefault().subscribe(this, "postThread", new RxBus.Callback<User>() {
+                    @Override
+                    public void onEvent(final User user) {
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvBus.append("\npostThread " + user.id);
+                            }
+                        });
+                    }
+                });
+                RxBus.getDefault().subscribeSticky(this, "postStickyMain", new RxBus.Callback<User>() {
+                    @Override
+                    public void onEvent(final User user) {
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvBus.append("\npostStickyMain " + user.id);
+                            }
+                        });
+                    }
+                });
+                RxBus.getDefault().subscribeSticky(this, "postStickyThread", new RxBus.Callback<User>() {
+                    @Override
+                    public void onEvent(final User user) {
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvBus.append("\npostStickyThread " + user.id);
                             }
                         });
                     }

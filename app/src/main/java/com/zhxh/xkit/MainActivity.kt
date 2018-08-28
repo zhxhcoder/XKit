@@ -21,17 +21,16 @@ class MainActivity : AppCompatActivity() {
 
 
         tvButton.setOnClickListener {
-            startActivity(Intent(this@MainActivity, PostActivity::class.java
-            ))
+            startActivity(Intent(this@MainActivity, PostActivity::class.java))
         }
 
-        RxBus.getDefault().subscribe(this, RxBus.Callback<User> { s -> tvBus.append("eventTag ${s.id}") })
+        RxBus.getDefault().subscribe(this, "postMain", RxBus.Callback<User> { s -> tvBus.append("\npostMain ${s.id}") })
 
-        RxBus.getDefault().subscribe(this, "haha", RxBus.Callback<User> { s -> tvBus.append("eventTag ${s.id}") })
+        RxBus.getDefault().subscribe(this, "postThread", RxBus.Callback<User> { s -> tvBus.append("\npostThread ${s.id}") })
 
-        RxBus.getDefault().subscribeSticky(this, "hehe", RxBus.Callback<User> { s -> tvBus.append("eventTag ${s.id}") })
+        RxBus.getDefault().subscribeSticky(this, "postStickyMain", RxBus.Callback<User> { s -> tvBus.append("\npostStickyMain ${s.id}") })
 
-        RxBus.getDefault().subscribeSticky(this, "thread", RxBus.Callback<User> { s -> tvBus.append("eventTag ${s.id}") })
+        RxBus.getDefault().subscribeSticky(this, "postStickyThread", RxBus.Callback<User> { s -> tvBus.append("\npostStickyThread ${s.id}") })
 
 
     }

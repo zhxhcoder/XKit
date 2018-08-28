@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".PostActivity">
 
+    <TextView
+        android:id="@+id/tvBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PostActivity" />
+
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.zhxh.xkit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,11 +17,16 @@ public class PostActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                RxBus.getDefault().postSticky("thread", new User(3));
+                RxBus.getDefault().post("postThread", new User(3));
+                RxBus.getDefault().postSticky("postStickyThread", new User(4));
             }
         });
 
-        RxBus.getDefault().post("haha", new User(2));
-        RxBus.getDefault().postSticky("hehe", new User(1));
+        RxBus.getDefault().post("postMain", new User(2));
+        RxBus.getDefault().postSticky("postStickyMain", new User(1));
+
+
+        startActivity(new Intent(PostActivity.this, TestActivity.class));
+
     }
 }
