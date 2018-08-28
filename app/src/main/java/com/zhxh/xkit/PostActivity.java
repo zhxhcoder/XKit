@@ -12,6 +12,14 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RxBus.getDefault().postSticky("thread", new User(3));
+            }
+        });
+
         RxBus.getDefault().post("haha", new User(2));
         RxBus.getDefault().postSticky("hehe", new User(1));
     }
