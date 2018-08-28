@@ -23,5 +23,5 @@ public enum ThreadMode {
     /**
      * 在当前线程中按照队列方式执行
      */
-    IMMEDIATE
+    TRAMPOLINE
 }
