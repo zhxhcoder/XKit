@@ -12,10 +12,14 @@ import io.reactivex.functions.Predicate;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
 
-
+/**
+ * 参考EventBus用RxJava实现RxBus
+ */
 public final class RxBus {
 
     private final FlowableProcessor<Object> mBus;
+
+    private static final String EMPTY_TAG = "";
 
     private final Consumer<Throwable> mOnError = new Consumer<Throwable>() {
         @Override
@@ -33,7 +37,7 @@ public final class RxBus {
     }
 
     public void post(final Object event) {
-        post("", event, false);
+        post(EMPTY_TAG, event, false);
     }
 
     public void post(final String tag, final Object event) {
@@ -41,7 +45,7 @@ public final class RxBus {
     }
 
     public void postSticky(final Object event) {
-        post("", event, true);
+        post(EMPTY_TAG, event, true);
     }
 
     public void postSticky(final String tag, final Object event) {
@@ -60,22 +64,25 @@ public final class RxBus {
     }
 
 
+    //version 1.6加上了删除消息的函数
     public <T> boolean removeStickyEvent(final String tag, final Class<T> eventType) {
         Utils.requireNonNull(eventType, tag);
         return CacheUtils.getInstance().removeStickyEvent(tag, eventType);
     }
 
+    //version 1.6加上了删除消息的函数
     public <T> boolean removeStickyEvent(final Class<T> eventType) {
-        return removeStickyEvent("", eventType);
+        return removeStickyEvent(EMPTY_TAG, eventType);
     }
 
+    //version 1.6加上了删除消息的函数
     public void removeStickyEvent() {
         CacheUtils.getInstance().removeAllStickyEvents();
     }
 
     public <T> void subscribe(final Object subscriber,
                               final Callback<T> callback) {
-        subscribe(subscriber, "", false, null, callback);
+        subscribe(subscriber, EMPTY_TAG, false, null, callback);
     }
 
     public <T> void subscribe(final Object subscriber,
@@ -87,7 +94,7 @@ public final class RxBus {
     public <T> void subscribe(final Object subscriber,
                               final Scheduler scheduler,
                               final Callback<T> callback) {
-        subscribe(subscriber, "", false, scheduler, callback);
+        subscribe(subscriber, EMPTY_TAG, false, scheduler, callback);
     }
 
     public <T> void subscribe(final Object subscriber,
@@ -99,7 +106,7 @@ public final class RxBus {
 
     public <T> void subscribeSticky(final Object subscriber,
                                     final Callback<T> callback) {
-        subscribe(subscriber, "", true, null, callback);
+        subscribe(subscriber, EMPTY_TAG, true, null, callback);
     }
 
     public <T> void subscribeSticky(final Object subscriber,
@@ -111,7 +118,7 @@ public final class RxBus {
     public <T> void subscribeSticky(final Object subscriber,
                                     final Scheduler scheduler,
                                     final Callback<T> callback) {
-        subscribe(subscriber, "", true, scheduler, callback);
+        subscribe(subscriber, EMPTY_TAG, true, scheduler, callback);
     }
 
     public <T> void subscribeSticky(final Object subscriber,

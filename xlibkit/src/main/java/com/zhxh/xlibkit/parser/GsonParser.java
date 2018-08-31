@@ -15,6 +15,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * gson解析类，对特殊gson串的处理
+ */
+
 public final class GsonParser {
 
     public static <T> T parse(String resultStr, Class<T> t) {
@@ -48,6 +52,7 @@ public final class GsonParser {
     }
 
 
+    //获得某个key的value值
     public static String parseGsonValue(String key, CharSequence input) {
         if (TextUtils.isEmpty(input)) return "";
         if (TextUtils.isEmpty(key)) return "";

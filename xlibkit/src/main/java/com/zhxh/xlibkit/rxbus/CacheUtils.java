@@ -41,6 +41,7 @@ final class CacheUtils {
         }
     }
 
+    //删除stickyEvent函数
     boolean removeStickyEvent(final String tag, final Class eventType) {
         synchronized (stickyEventsMap) {
             List<TagMsg> stickyEvents = stickyEventsMap.get(eventType);
