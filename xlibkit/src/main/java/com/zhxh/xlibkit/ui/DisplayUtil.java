@@ -15,8 +15,6 @@ import com.zhxh.xlibkit.common.StringUtil;
  * Created by zhxh on 2018/7/10
  */
 public final class DisplayUtil {
-
-
     /**
      * 将px值转换为dip或dp值，保证尺寸大小不变
      *

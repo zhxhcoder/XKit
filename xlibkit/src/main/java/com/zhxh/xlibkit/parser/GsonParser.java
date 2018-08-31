@@ -33,7 +33,7 @@ public final class GsonParser {
     }
 
     /**
-     * 多态问题的处理
+     * 解决gson可能出现的多态问题
      *
      * @param resultStr   接口返回的字符串
      * @param t           要转换成的类型
