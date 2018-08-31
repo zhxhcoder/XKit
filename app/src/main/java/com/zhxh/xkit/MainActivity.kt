@@ -24,11 +24,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, PostActivity::class.java))
         }
 
-        RxBus.getDefault().subscribe(this, "postMain", RxBus.Callback<User> { s -> tvBus.append("\npostMain ${s.id}") })
+        RxBus.getDefault().subscribe(this, "postMain", RxBus.Callback<User> { s ->
+            tvBus.append("\npostMain ${s.id}")
+        })
 
         RxBus.getDefault().subscribe(this, "postThread", RxBus.Callback<User> { s -> tvBus.append("\npostThread ${s.id}") })
 
-        RxBus.getDefault().subscribeSticky(this, "postStickyMain", RxBus.Callback<User> { s -> tvBus.append("\npostStickyMain ${s.id}") })
+        RxBus.getDefault().subscribeSticky(this, "postStickyMain", RxBus.Callback<User> { s ->
+            tvBus.append("\npostStickyMain ${s.id}")
+            RxBus.getDefault().removeStickyEvent("postStickyMain", User::class.java)
+
+        })
 
         RxBus.getDefault().subscribeSticky(this, "postStickyThread", RxBus.Callback<User> { s -> tvBus.append("\npostStickyThread ${s.id}") })
 
