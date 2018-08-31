@@ -41,6 +41,28 @@ final class CacheUtils {
         }
     }
 
+    boolean removeStickyEvent(final String tag, final Class eventType) {
+        synchronized (stickyEventsMap) {
+            List<TagMsg> stickyEvents = stickyEventsMap.get(eventType);
+            if (stickyEvents == null) {
+                return true;
+            } else {
+                for (TagMsg msgEvent : stickyEvents) {
+                    if (msgEvent.isSameType(tag, eventType)) {
+                        stickyEvents.remove(msgEvent);
+                    }
+                }
+                return true;
+            }
+        }
+    }
+
+    public void removeAllStickyEvents() {
+        synchronized (stickyEventsMap) {
+            stickyEventsMap.clear();
+        }
+    }
+
     TagMsg findStickyEvent(final Class eventType, final String tag) {
         synchronized (stickyEventsMap) {
             List<TagMsg> stickyEvents = stickyEventsMap.get(eventType);

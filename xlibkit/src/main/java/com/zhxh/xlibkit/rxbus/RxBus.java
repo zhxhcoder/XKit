@@ -59,6 +59,20 @@ public final class RxBus {
         mBus.onNext(msgEvent);
     }
 
+
+    public <T> boolean removeStickyEvent(final String tag, final Class<T> eventType) {
+        Utils.requireNonNull(eventType, tag);
+        return CacheUtils.getInstance().removeStickyEvent(tag, eventType);
+    }
+
+    public <T> boolean removeStickyEvent(final Class<T> eventType) {
+        return removeStickyEvent("", eventType);
+    }
+
+    public void removeStickyEvent() {
+        CacheUtils.getInstance().removeAllStickyEvents();
+    }
+
     public <T> void subscribe(final Object subscriber,
                               final Callback<T> callback) {
         subscribe(subscriber, "", false, null, callback);
