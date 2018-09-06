@@ -1,9 +1,13 @@
 package com.zhxh.xlibkit.rxbus;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -61,6 +65,51 @@ public final class RxBus {
             CacheUtils.getInstance().addStickyEvent(msgEvent);
         }
         mBus.onNext(msgEvent);
+    }
+
+    private void postDelay(final String tag, final Object event,
+                           final boolean isSticky, long millisecond) {
+        Utils.requireNonNull(event, tag);
+        Disposable[] disposable = new Disposable[1];
+
+        Observable.just(millisecond).delay(millisecond, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposable[0] = d;
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        TagMsg msgEvent = new TagMsg(tag, event);
+                        if (isSticky) {
+                            CacheUtils.getInstance().addStickyEvent(msgEvent);
+                        }
+                        mBus.onNext(msgEvent);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        if (disposable.length >= 1) {
+                            disposable[0].dispose();
+                        }
+                    }
+                });
+
+    }
+
+    public void postDelay(final String tag, final Object event,
+                          long millisecond) {
+        postDelay(tag, event, false, millisecond);
+    }
+
+    public void postStickyDelay(final String tag, final Object event,
+                                long millisecond) {
+        postDelay(tag, event, true, millisecond);
     }
 
 

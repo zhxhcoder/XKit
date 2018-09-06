@@ -31,7 +31,9 @@ public class PostActivity extends AppCompatActivity {
         });
 
         RxBus.getDefault().post("postMain", new User(1));
+        RxBus.getDefault().postDelay("postDelay", new User(-1), 2000);
         RxBus.getDefault().postSticky("postStickyMain", new User(2));
+        RxBus.getDefault().postStickyDelay("postStickyMain", new User(-2), 2000);
 
     }
 }
