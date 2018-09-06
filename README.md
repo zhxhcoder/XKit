@@ -77,3 +77,33 @@ public class YourActivity extends Activity {
         RxBus.getDefault().unregister(this);
     }
 }
+
+
+## Version 1.6
+
+加上了
+
+
+    //version 1.6加上了删除消息的函数
+    public <T> boolean removeStickyEvent(final String tag, final Class<T> eventType) {
+        Utils.requireNonNull(eventType, tag);
+        return CacheUtils.getInstance().removeStickyEvent(tag, eventType);
+    }
+
+    //version 1.6加上了删除消息的函数
+    public <T> boolean removeStickyEvent(final Class<T> eventType) {
+        return removeStickyEvent(EMPTY_TAG, eventType);
+    }
+
+    //version 1.6加上了删除消息的函数
+    public void removeStickyEvent() {
+        CacheUtils.getInstance().removeAllStickyEvents();
+    }
+
+
+## Version 1.7 计划加上延时或定时功能，并且加上自动发送信息功能
+
+postDelay
+postAtTime
+postInterval
+
