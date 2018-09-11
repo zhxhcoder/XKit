@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.zhxh.xlibkit.common.LogUtil
 import com.zhxh.xlibkit.rxbus.RxBus
 
 
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         RxBus.getDefault().subscribe(this, "postMain", RxBus.Callback<User> { s ->
+            LogUtil.d("\npostMain ${s.id}")
+            LogUtil.d("postMain", "\npostMain ${s.id}")
             tvBus.append("\npostMain ${s.id}")
         })
 
