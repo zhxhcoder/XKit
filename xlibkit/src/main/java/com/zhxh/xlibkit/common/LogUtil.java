@@ -2,8 +2,6 @@ package com.zhxh.xlibkit.common;
 
 import android.util.Log;
 
-import com.zhxh.xlibkit.BuildConfig;
-
 /**
  * Created by zhxh on 2018/8/29
  * 日志输出优化
@@ -16,14 +14,20 @@ public final class LogUtil {
     static String methodName;
     static int lineNumber;
 
+    private static boolean isDebuggable = false;
+
+    public static void initDebugConfig(boolean isDebuggable) {
+        LogUtil.isDebuggable = isDebuggable;
+    }
+
     private LogUtil() {
         /* Protect from instantiations */
         /* cannot be instantiated */
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    private static boolean isDebuggable() {
-        return BuildConfig.DEBUG;
+    private static boolean isLogIgnore() {
+        return !isDebuggable;
     }
 
     private static String createLog(String log) {
@@ -59,7 +63,7 @@ public final class LogUtil {
     }
 
     public static void e(String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         // Throwable instance must be created before any methods
         getMethodNames(new Throwable().getStackTrace());
@@ -67,35 +71,35 @@ public final class LogUtil {
     }
 
     public static void i(String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         getMethodNames(new Throwable().getStackTrace());
         Log.i(TAG, createLog(message));
     }
 
     public static void d(String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         getMethodNames(new Throwable().getStackTrace());
         Log.d(TAG, createLog(message));
     }
 
     public static void v(String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         getMethodNames(new Throwable().getStackTrace());
         Log.v(TAG, createLog(message));
     }
 
     public static void w(String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         getMethodNames(new Throwable().getStackTrace());
         Log.w(TAG, createLog(message));
     }
 
     public static void wtf(String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         getMethodNames(new Throwable().getStackTrace());
         Log.wtf(TAG, createLog(message));
@@ -103,7 +107,7 @@ public final class LogUtil {
 
     /********************************************************/
     public static void e(String tag, String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         // Throwable instance must be created before any methods
         getMethodNames(new Throwable().getStackTrace());
@@ -115,7 +119,7 @@ public final class LogUtil {
     }
 
     public static void i(String tag, String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         // Throwable instance must be created before any methods
         getMethodNames(new Throwable().getStackTrace());
@@ -127,7 +131,7 @@ public final class LogUtil {
     }
 
     public static void d(String tag, String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         // Throwable instance must be created before any methods
         getMethodNames(new Throwable().getStackTrace());
@@ -139,7 +143,7 @@ public final class LogUtil {
     }
 
     public static void v(String tag, String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         // Throwable instance must be created before any methods
         getMethodNames(new Throwable().getStackTrace());
@@ -151,7 +155,7 @@ public final class LogUtil {
     }
 
     public static void w(String tag, String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         // Throwable instance must be created before any methods
         getMethodNames(new Throwable().getStackTrace());
@@ -163,7 +167,7 @@ public final class LogUtil {
     }
 
     public static void wtf(String tag, String message) {
-        if (!isDebuggable())
+        if (isLogIgnore())
             return;
         // Throwable instance must be created before any methods
         getMethodNames(new Throwable().getStackTrace());

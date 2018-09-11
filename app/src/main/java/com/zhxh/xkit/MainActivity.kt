@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        LogUtil.initDebugConfig(BuildConfig.DEBUG)
+
         tvBus = findViewById<TextView>(R.id.tvBus)
         tvButton = findViewById<TextView>(R.id.tvButton)
 

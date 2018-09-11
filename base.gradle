@@ -6,8 +6,8 @@ ext {
             applicationId    : 'com.zhxh.xkit',
             minSdkVersion    : 15,
             targetSdkVersion : 27,
-            versionCode      : 8,
-            versionName      : '1.8',
+            versionCode      : 9,
+            versionName      : '1.9',
             minifyEnabled    : false,
             outputFileName   : "xkit.aar"
     ]
@@ -18,11 +18,11 @@ ext {
     ]
 
     build = [
-            'outputFileName'       : 'xkit.aar',
+            'outputFileName': 'xkit.aar',
     ]
 
     bintray = [
-            'version'    : "1.8",
+            'version'    : "1.9",
             'groupId'    : 'com.zhxh',//groupId
             'publish'    : true,
             'packageName': 'XKit',//packageName
@@ -34,7 +34,7 @@ ext {
             'desc'       : 'android kit for developer',//版本描述
             'userId'     : 'geekcoder',
             'userEmail'  : 'zhxhcoder@gmail.com',
-            'vcsTag'     : 'v1.8'
+            'vcsTag'     : 'v1.9'
     ]
 
 }

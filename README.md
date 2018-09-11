@@ -104,6 +104,19 @@ public class YourActivity extends Activity {
 ## Version 1.7 计划加上延时或定时功能，并且加上自动发送信息功能
 
 postDelay
-postAtTime
 postInterval
 
+## Version 1.8 计划加上延时或定时功能，并且加上自动发送信息功能
+
+postStickyDelay
+
+## Version 1.9
+
+优化了 日志输出
+
+com.zhxh.xkit D/defaultLog: [MainActivity.kt onEvent:31]->
+    postMain 1
+
+在application的onCreate中加入该语句可以自动实现debug包输出日志，release包不输出，（如果不加直接使用，release包也会有日志输出）
+
+LogUtil.initDebugConfig(BuildConfig.DEBUG)
