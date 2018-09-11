@@ -8,8 +8,7 @@ import com.zhxh.xlibkit.BuildConfig;
  * Created by zhxh on 2018/9/11
  */
 public class L {
-    public final static boolean isDebugDevice = true;
-    public final static String defaultTag = "defaultTag";
+    private final static String defaultTag = "defaultTag";
     static String TAG;
     static String fileName;
     static String className;
@@ -22,7 +21,7 @@ public class L {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    public static boolean isDebuggable() {
+    private static boolean isDebuggable() {
         return BuildConfig.DEBUG;
     }
 
