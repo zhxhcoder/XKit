@@ -6,6 +6,7 @@ import com.zhxh.xlibkit.BuildConfig;
 
 /**
  * Created by zhxh on 2018/8/29
+ * 日志输出优化
  */
 public final class LogUtil {
     private final static String defaultTag = "defaultLog";
