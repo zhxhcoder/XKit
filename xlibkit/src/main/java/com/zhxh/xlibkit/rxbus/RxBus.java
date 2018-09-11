@@ -18,6 +18,9 @@ import io.reactivex.processors.PublishProcessor;
 
 /**
  * 参考EventBus用RxJava实现RxBus
+ * version 1.6加上了删除消息的函数
+ * version 1.7加上了发送延迟消息的函数
+ * version 1.8推荐延迟消息只用sticky模式
  */
 public final class RxBus {
 
@@ -102,6 +105,8 @@ public final class RxBus {
 
     }
 
+    //以后版本将不再保留非sticky消息的延迟，延迟的消息发送建议用postStickyDelay
+    @Deprecated
     public void postDelay(final String tag, final Object event,
                           long millisecond) {
         postDelay(tag, event, false, millisecond);
