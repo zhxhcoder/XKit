@@ -17,6 +17,13 @@ public class TestActivity extends AppCompatActivity {
 
         tvBus = findViewById(R.id.tvBus);
 
+        initTestSubscribe();
+
+
+    }
+
+    private void initTestSubscribe() {
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -70,7 +77,6 @@ public class TestActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 
     @Override

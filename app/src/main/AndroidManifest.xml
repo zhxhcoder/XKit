@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PostActivity" />
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".TestActivity" />
+        <activity android:name=".MainOkHttpActivity" />
     </application>
 
 </manifest>

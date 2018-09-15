@@ -1,8 +1,8 @@
 package com.zhxh.xkit;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.zhxh.xlibkit.rxbus.RxBus;
@@ -27,6 +27,7 @@ public class PostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PostActivity.this, TestActivity.class));
+                startActivity(new Intent(PostActivity.this, MainOkHttpActivity.class));
             }
         });
 
