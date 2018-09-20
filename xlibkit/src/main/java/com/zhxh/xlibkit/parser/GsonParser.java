@@ -52,13 +52,15 @@ public final class GsonParser {
     }
 
 
-    //获得某个key的value值
+    //获得某个key的value值 支持number类型
     public static String parseGsonValue(String key, CharSequence input) {
         if (TextUtils.isEmpty(input)) return "";
         if (TextUtils.isEmpty(key)) return "";
         List<String> matches = new ArrayList<>();
 
-        String regex = "(?<=\"" + key + "\":\")[^\"]*";
+        String result = "";
+
+        String regex = "(?<=\"" + key + "\":).*?(?=,\")";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
@@ -66,9 +68,19 @@ public final class GsonParser {
             matches.add(matcher.group());
         }
         if (matches.size() > 0) {
-            return matches.get(0);
+            result = matches.get(0);
         }
-        return "";
+
+        if (!TextUtils.isEmpty(result)) {
+            if (result.startsWith("\"")) {
+                result = result.substring(1, result.length());
+            }
+            if (result.endsWith("\"")) {
+                result = result.substring(0, result.length() - 1);
+            }
+        }
+
+        return result;
     }
 
     public static class StringAdapter implements JsonDeserializer<String> {
