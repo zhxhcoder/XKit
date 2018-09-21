@@ -51,8 +51,18 @@ public final class GsonParser {
         return gson.fromJson(resultStr, t);
     }
 
+    //对多态value值，选择默认解析为string类型
+    public static <T> T parseLazy(String resultStr, Class<T> t, Type baseType) {
+        if (TextUtils.isEmpty(resultStr))
+            return null;
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(baseType, new StringAdapter())
+                .create();
+        return gson.fromJson(resultStr, t);
+    }
 
-    //获得某个key的value值 支持number类型
+
+    //获得某个key的value值 支持number类型 或其他实体类型 均返回字符串string类型
     public static String parseGsonValue(String key, CharSequence input) {
         if (TextUtils.isEmpty(input)) return "";
         if (TextUtils.isEmpty(key)) return "";
