@@ -34,7 +34,7 @@ public class TestActivity extends AppCompatActivity {
         tvTestValue = findViewById(R.id.tvTestValue);
 
 
-        tvGsonValue.append(GsonParser.parseGsonValue("CouponID", gsonStr));
+        tvGsonValue.append(GsonParser.parseGsonNumber("CouponID", gsonStr));
         tvGsonValue.append("\n");
         tvGsonValue.append(GsonParser.parseGsonValue("EndTime", gsonStr));
         tvGsonValue.append("\n");
