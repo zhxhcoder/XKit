@@ -70,7 +70,7 @@ public final class GsonParser {
 
         String result = "";
 
-        String regex = "(?<=\"" + key + "\":)[^\"]*";
+        String regex = "(?<=\"" + key + "\":).*?(?=,\")";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
